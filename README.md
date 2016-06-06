@@ -4,6 +4,7 @@ This library let's you control the display on a Logitech G19 via the LibUsb driv
 
 # Dependencies
  LibUsb driver must be installed on the Logitech G19 Gaming Keyboard or Logitech LCD Interface
+ 
  (G19: Vendor ID: 046D, Product ID: C229)
  
  
