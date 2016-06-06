@@ -33,7 +33,7 @@ namespace G19LCDTest_WPF
             life_timer.Interval = new TimeSpan(0, 0, 0, 0, 50);
             life_timer.Tick += new EventHandler(Life_Tick);
 
-            //vID = 0x046D - pID = 0x229C  for the G19
+            //vID = 0x046D - pID = 0xC229  for the G19
             lcd = new LCD(1133, 49705);
             lcd.OpenDevice();
 

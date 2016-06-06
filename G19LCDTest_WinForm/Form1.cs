@@ -16,7 +16,7 @@ namespace G19LCDTest_WinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //vID = 0x046D - pID = 0x229C  for the G19
+            //vID = 0x046D - pID = 0xC229  for the G19
             lcd = new LCD(1133, 49705);
             lcd.OpenDevice();
         }
