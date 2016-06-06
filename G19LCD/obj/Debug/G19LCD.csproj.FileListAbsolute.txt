@@ -1,0 +1,12 @@
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\bin\Debug\G19LCD.dll
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\bin\Debug\G19LCD.pdb
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\bin\Debug\LibUsbDotNet.dll
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\obj\Debug\G19LCD.csprojResolveAssemblyReference.cache
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\obj\Debug\G19LCD.dll
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\obj\Debug\G19LCD.pdb
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\G19LCD\bin\Debug\G19LCD.dll
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\G19LCD\bin\Debug\G19LCD.pdb
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\G19LCD\obj\Debug\G19LCD.dll
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\G19LCD\obj\Debug\G19LCD.pdb
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\G19LCD\bin\Debug\LibUsbDotNet.dll
+C:\Users\endle\Documents\Visual Studio 2013\Projects\G19LCD\G19LCD\obj\Debug\G19LCD.csprojResolveAssemblyReference.cache

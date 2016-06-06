@@ -1,0 +1,31 @@
+﻿<Window x:Class="G19LCDTest_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:G19LCDTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="310" Width="330" ResizeMode="NoResize" WindowStyle="ToolWindow" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" VerticalAlignment="Center" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lbGeneration" Content="Cell Size:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Grid.Column="0"/>
+            <Button x:Name="btnAction" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75" Click="btnAction_Click"/>
+            <Button x:Name="btnRandomize" Content="Seed" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75" Click="btnRandomize_Click" />
+
+
+        </Grid>
+        <Grid x:Name="gridImage" Grid.Row="1" Width="320" Height="240" SizeChanged="gridImage_SizeChanged">
+            <Image Name="imgOutput" Stretch="None" Width="320" Height="240" Source="pack://siteoforigin:,,,/Resources/test1.jpg"  />
+        </Grid>
+
+    </Grid>
+</Window>

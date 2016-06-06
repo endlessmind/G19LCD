@@ -1,0 +1,32 @@
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\bin\Debug\LgLCdBacklightTest.exe
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\bin\Debug\LgLCdBacklightTest.pdb
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\bin\Debug\LgBackLight.NET.dll
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\bin\Debug\LgBackLight.NET.pdb
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.Form1.resources
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.Properties.Resources.resources
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.exe
+C:\Users\Pontus-Jobb\Desktop\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.pdb
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LgLCdBacklightTest.exe
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LgLCdBacklightTest.pdb
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LgBackLight.NET.dll
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LgBackLight.NET.pdb
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.csprojResolveAssemblyReference.cache
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.Form1.resources
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.Properties.Resources.resources
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.csproj.GenerateResource.Cache
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.exe
+C:\Users\HåBe\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.pdb
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.exe
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.pdb
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.csprojResolveAssemblyReference.cache
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.Form1.resources
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.Properties.Resources.resources
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\obj\x86\Debug\LgLCdBacklightTest.csproj.GenerateResource.Cache
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LgLCdBacklightTest.exe
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LgLCdBacklightTest.pdb
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LgBackLight.NET.dll
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LgBackLight.NET.pdb
+C:\Users\endle\Documents\Visual Studio 2013\Projects\LgLCdBacklightTest\bin\Debug\LibUsbDotNet.dll
