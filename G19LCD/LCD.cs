@@ -3,16 +3,13 @@ using LibUsbDotNet.Main;
 using System;
 using System.Drawing;
 using System.Windows.Media.Imaging;
-using static G19LCD.BitmapSourceHelper;
-using static G19LCD.WpfPixelUtils;
 
 namespace G19LCD
 {
     public class LCD
     {
 
-        int G19_BUFFER_LEN = (320 * 240 * 2) + 512;
-        static byte[] header = new byte[16] { 0x10, 0x0F, 0x00, 0x58, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x01, 0xEF, 0x00, 0x0F };
+
 
         UsbEndpointWriter writer;
         UsbEndpointReader reader;
@@ -21,6 +18,8 @@ namespace G19LCD
 
         public static UsbDevice MyUsbDevice;
         public UsbDeviceFinder MyUsbFinder;
+
+        private Bitmap currentImageVisible;
 
         /// <summary>
         ///  Create a new instance of the LCD class
@@ -101,104 +100,60 @@ namespace G19LCD
         /// <summary>
         ///  Update the screen with the bitmap
         /// </summary>
-        /// <param name="bmp">WinForm bitmap</param>
+        /// <param name="bmp">WinForm Bitmap</param>
         public void UpdateScreen(Bitmap bmp)
         {
-            byte[] lcd_buffer = new byte[G19_BUFFER_LEN];
+            UpdateScreen(bmp, null);
+        }
 
-            lcd_buffer[0] = 0x02;
-            Array.Copy(header, lcd_buffer, header.Length);
-
-            //Just filling the remaining header with nonsens data
-            for (int i = 16; i < 256; i++) { lcd_buffer[i] = Convert.ToByte((char)i); }
-            for (int i = 0; i < 256; i++) lcd_buffer[i + 256] = Convert.ToByte((char)i);
-
-
-            //The actual image data
-            int offset = 512;
-            int count = 0;
-            for (int x = 0; x < 320; ++x)
-            {
-                for (int y = 0; y < 240; ++y)
-                {
-                    Color col = bmp.GetPixel(x, y);
-                    int green = col.G >> 2;
-                    int blue = col.B;
-                    int red = col.R;
-
-                    byte firstByte = joinGreenAndBlue(green, blue);
-                    lcd_buffer[count + offset] = firstByte;
-
-                    byte secByte = joinRedAndGreen(red, green);
-                    lcd_buffer[(count + 1) + offset] = secByte;
-                    count += 2;
-                }
-            }
-
-            //Send it!
-            int written;
-            //The Texas instrument TMS320DM355ZCE allows us to update this screen at 60fps, but 16ms to send would be to stretch it a bit. 50ms will give 20fps
-            ec = writer.Write(lcd_buffer, 50, out written);
-
-            if (ec != ErrorCode.None) throw new Exception(UsbDevice.LastErrorString);
+        /// <summary>
+        ///  Update the screen with the bitmap
+        /// </summary>
+        /// <param name="bmp">WPF BitmapSource</param>
+        public void UpdateScreen(BitmapSource bmp)
+        {
+            UpdateScreen(Utils.BitmapImage2Bitmap(bmp));
         }
 
 
         /// <summary>
-        /// Update the screen with the bitmap
+        /// Update the screen with the bitmapSource
         /// </summary>
-        /// <param name="bmp">WPF bitmap</param>
-        public void UpdateScreen(BitmapSource bmp)
+        /// <param name="bmp">WPF BitmapSource</param>
+        /// <param name="transaction">Transaction between images</param>
+        public void UpdateScreen(BitmapSource bmp, Transaction transaction)
         {
-            byte[] lcd_buffer = new byte[G19_BUFFER_LEN];
+            UpdateScreen(Utils.BitmapImage2Bitmap(bmp), transaction);
+        }
 
-            lcd_buffer[0] = 0x02;
-            Array.Copy(header, lcd_buffer, header.Length);
-
-            //Just filling the remaining header with nonsens data
-            for (int i = 16; i < 256; i++) { lcd_buffer[i] = Convert.ToByte((char)i); }
-            for (int i = 0; i < 256; i++) lcd_buffer[i + 256] = Convert.ToByte((char)i);
-
-
-            //The actual image data
-            int offset = 512;
-            int count = 0;
-            PixelColor[,] pixels = GetPixels(bmp);
-            for (int x = 0; x < 320; ++x)
+        /// <summary>
+        ///  Update the screen with the bitmap
+        /// </summary>
+        /// <param name="bmp">WinForm Bitmap</param>
+        /// <param name="transaction">Transaction between images</param>
+        public void UpdateScreen(Bitmap bmp, Transaction transaction)
+        {
+            if (transaction != null && currentImageVisible != null)
             {
-                for (int y = 0; y < 240; ++y)
-                {
-                    PixelColor col = pixels[x, y];
-                    int green = col.Green >> 2;
-                    int blue = col.Blue;
-                    int red = col.Red;
-
-                    byte firstByte = joinGreenAndBlue(green, blue);
-                    lcd_buffer[count + offset] = firstByte;
-
-                    byte secByte = joinRedAndGreen(red, green);
-                    lcd_buffer[(count + 1) + offset] = secByte;
-                    count += 2;
-                }
+                //We create a clone of the new (or next) bitmap, so that we can dispose the object when the transaction is done.
+                //This will reduse the amount of pointers used in memory during transaction, and we can dispose some of them when we're done!
+                transaction.start(currentImageVisible, bmp.Clone(new Rectangle(0, 0, bmp.Width, bmp.Height), bmp.PixelFormat));
             }
 
+            byte[] lcd_buffer = Utils.convertToByte(bmp);
             //Send it!
             int written;
             //The Texas instrument TMS320DM355ZCE allows us to update this screen at 60fps, but 16ms to send would be to stretch it a bit. 50ms will give 20fps
-            ec = writer.Write(lcd_buffer, 50, out written);
+            ec = writer.Write(lcd_buffer, 33, out written);
 
-            if (ec != ErrorCode.None) throw new Exception(UsbDevice.LastErrorString);
-        }
-
-
-        private byte joinGreenAndBlue(int g, int b)
-        {
-            return (byte)((g << 5) | (b >> 3));
-        }
-
-        private byte joinRedAndGreen(int r, int g)
-        {
-            return (byte)((r & 0xF8) | (g >> 3));
+            if (ec != ErrorCode.None)
+            {
+                throw new Exception(UsbDevice.LastErrorString);
+            }
+            else
+            {
+                currentImageVisible = bmp;
+            }
         }
 
     }
