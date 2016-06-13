@@ -1,8 +1,7 @@
-﻿<Application x:Class="G19LCDTest.App"
+﻿<Application x:Class="G19LCDText_pages.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:G19LCDTest"
-             StartupUri="MainWindow.xaml" >
+             xmlns:local="clr-namespace:G19LCDText_pages" Startup="Application_Startup">
     <Application.Resources>
          
     </Application.Resources>

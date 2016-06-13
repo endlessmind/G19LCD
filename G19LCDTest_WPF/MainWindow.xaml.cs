@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using G19LCD;
-using G19LCD.Transactions;
 
 namespace G19LCDTest_WPF
 {

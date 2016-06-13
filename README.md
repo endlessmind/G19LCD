@@ -4,6 +4,9 @@ This library let's you control the display on a Logitech G19 via the LibUsb driv
 It gives you full control over what is shown on the display.
 
 
+Test layout! (Included in the samples)
+
+![alt tag](https://raw.githubusercontent.com/endlessmind/G19LCD/master/page1.jpg)
 # Why and how?
 
 This project was made to let you use the display stand-alone without the rest of the keyboard,
@@ -43,6 +46,6 @@ I do recommend keeping the usb-hub if possible, in case you want to add touchscr
 </br>
 
 
-Make sure LCore.exe is not running before trying to use the library
+Make sure LCore.exe is not running before trying to use the library (May not be needed, everything works fine when I forgot to cloes LCore.exe)
 
 You can download the driver wizard (infWizard) from <a href="http://libusbdotnet.sourceforge.net/">LibUsbDotNet's page</a>

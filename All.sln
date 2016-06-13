@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G19LCD", "G19LCD\G19LCD.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G19LCDTest_WPF", "G19LCDTest_WPF\G19LCDTest_WPF.csproj", "{AE21E2C8-F78E-40A2-98B0-3BA953133284}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G19LCDText_pages", "G19LCDText_pages\G19LCDText_pages.csproj", "{5A682EA5-717C-4092-B8C3-69D6988B23BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,14 @@ Global
 		{AE21E2C8-F78E-40A2-98B0-3BA953133284}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AE21E2C8-F78E-40A2-98B0-3BA953133284}.Release|x86.ActiveCfg = Release|Any CPU
 		{AE21E2C8-F78E-40A2-98B0-3BA953133284}.Release|x86.Build.0 = Release|Any CPU
+		{5A682EA5-717C-4092-B8C3-69D6988B23BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A682EA5-717C-4092-B8C3-69D6988B23BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A682EA5-717C-4092-B8C3-69D6988B23BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A682EA5-717C-4092-B8C3-69D6988B23BA}.Debug|x86.Build.0 = Debug|Any CPU
+		{5A682EA5-717C-4092-B8C3-69D6988B23BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A682EA5-717C-4092-B8C3-69D6988B23BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A682EA5-717C-4092-B8C3-69D6988B23BA}.Release|x86.ActiveCfg = Release|Any CPU
+		{5A682EA5-717C-4092-B8C3-69D6988B23BA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

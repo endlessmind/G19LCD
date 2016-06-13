@@ -1,6 +1,9 @@
-﻿using LibUsbDotNet;
+﻿using G19LCD.Pages;
+using G19LCD.Transactions;
+using LibUsbDotNet;
 using LibUsbDotNet.Main;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 
@@ -8,9 +11,6 @@ namespace G19LCD
 {
     public class LCD
     {
-
-
-
         UsbEndpointWriter writer;
         UsbEndpointReader reader;
         ErrorCode ec = ErrorCode.None;
@@ -19,7 +19,42 @@ namespace G19LCD
         public static UsbDevice MyUsbDevice;
         public UsbDeviceFinder MyUsbFinder;
 
+        private int cPageIndex;
+
         private Bitmap currentImageVisible;
+
+        private Transaction pageTrans = null;
+
+        public List<LcdPage> Pages { get; set;  }
+
+        
+
+        public LcdPage CurrentPage {
+            get
+            {
+                return Pages[CurrentPageIndex];
+            }
+            set
+            {
+                cPageIndex = Pages.IndexOf(value);
+                pageTrans = new FadeTransaction(this);
+                UpdatePage();
+            }
+        }
+
+        public int CurrentPageIndex
+        {
+            get
+            {
+                return cPageIndex;
+            }
+            set
+            {
+                cPageIndex = value;
+                pageTrans = new FadeTransaction(this);
+                UpdatePage();
+            }
+        }
 
         /// <summary>
         ///  Create a new instance of the LCD class
@@ -97,12 +132,21 @@ namespace G19LCD
             }
         }
 
+        public void UpdatePage()
+        {
+            LcdPage pg = Pages[CurrentPageIndex];
+            UpdateScreen(pg.Invalidate(), pageTrans);
+            //Screen updated
+            pageTrans = null;
+        }
+
         /// <summary>
         ///  Update the screen with the bitmap
         /// </summary>
         /// <param name="bmp">WinForm Bitmap</param>
         public void UpdateScreen(Bitmap bmp)
         {
+            bmp.Save("page" + cPageIndex + ".jpg");
             UpdateScreen(bmp, null);
         }
 

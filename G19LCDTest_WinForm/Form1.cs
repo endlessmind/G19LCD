@@ -23,6 +23,11 @@ namespace G19LCDTest_WinForm
             //vID = 0x046D - pID = 0xC229  for the G19
             lcd = new LCD(1133, 49705);
             lcd.OpenDevice();
+
+            //label1.Text = this.Width + "x" + this.Height;
+
+            this.Width = 320;
+            this.Height = 240;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -62,6 +67,11 @@ namespace G19LCDTest_WinForm
             Console.WriteLine("Transaction complete");
             //Unregister the event, as the Transaction will be disposed after this event was triggered
             ((Transaction)sender).TransEvent -= new TransactionEventHandler(OnTransActionComplete);
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            label1.Text = this.Width + "x" + this.Height;
         }
     }
 }
