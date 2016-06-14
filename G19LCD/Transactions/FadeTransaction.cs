@@ -20,7 +20,7 @@ namespace G19LCD.Transactions
             //drawT.Start();
             fadeLoop();
             //Transaction done
-            OnTransActionComplete(EventArgs.Empty);
+            OnTransActionComplete(new EventArgs());
 
             currentImage.Dispose();
             next.Dispose();

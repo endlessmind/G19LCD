@@ -6,10 +6,47 @@
              xmlns:local="clr-namespace:G19LCDText_pages"
              mc:Ignorable="d" 
              d:DesignHeight="240" d:DesignWidth="320" Loaded="UserControl_Loaded">
-    <Grid Background="White">
-        <Label x:Name="label" Content="This is page No.1" Margin="21,21,21,21" VerticalAlignment="Top"/>
-        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="21,196,0,0" VerticalAlignment="Top" Width="278" Height="24" Maximum="240"/>
-        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Margin="142,147,0,0" VerticalAlignment="Top"/>
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF1B1B1B"/>
+                <GradientStop Color="#FF979797" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label x:Name="lblLocation" Content="Weather for: Trelleborg, Sweden" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFD8D8D8"/>
+        <Image x:Name="imgWeather" HorizontalAlignment="Left" Height="170" Margin="101,22,0,0" VerticalAlignment="Top" Width="180"/>
+        <Label x:Name="lblTemp" Content="18°C" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="48" FontWeight="Bold"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="50" Margin="10,80,0,0" VerticalAlignment="Top" Width="50" Source="Resources/wind.png"/>
+        <Label x:Name="lblWindSpeed" Content="" HorizontalAlignment="Left" Margin="15,110,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#FFD8D8D8"/>
+        <Image x:Name="imgHumid" HorizontalAlignment="Left" Height="50" Margin="10,145,0,0" VerticalAlignment="Top" Width="50" Source="Resources/humidity.png"/>
+        <Label x:Name="lblHumid" Content="" HorizontalAlignment="Left" Margin="15,175,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#FFD8D8D8"/>
 
+
+        <Grid Height="82" Margin="82,153,5,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="75" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label x:Name="lblFore1Day" Grid.Column="0" Grid.Row="0" Content="" Margin="0" HorizontalAlignment="Center" FontSize="13" FontWeight="Bold" Foreground="#FFD8D8D8"/>
+            <Label x:Name="lblFore2Day" Grid.Column="1" Grid.Row="0" Content="" Margin="0" HorizontalAlignment="Center" FontSize="13" FontWeight="Bold" Foreground="#FFD8D8D8"/>
+            <Label x:Name="lblFore3Day" Grid.Column="2" Grid.Row="0" Content="" Margin="0" HorizontalAlignment="Center" FontSize="13" FontWeight="Bold" Foreground="#FFD8D8D8"/>
+
+            <Image x:Name="imgFore1" Grid.Column="0" Grid.Row="1" Height="42"  VerticalAlignment="Top" Width="42"/>
+            <Label x:Name="lblFore1" Grid.Column="0" Grid.Row="1" Content="" Margin="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FFD8D8D8"/>
+
+            <Image x:Name="imgFore2" Grid.Column="1" Grid.Row="1" Height="42"  VerticalAlignment="Top" Width="42"/>
+            <Label x:Name="lblFore2" Grid.Column="1" Grid.Row="1" Content="" Margin="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FFD8D8D8"/>
+
+            <Image x:Name="imgFore3" Grid.Column="2" Grid.Row="1" Height="42"  VerticalAlignment="Top" Width="42"/>
+            <Label x:Name="lblFore3" Grid.Column="2" Grid.Row="1" Content="" Margin="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FFD8D8D8"/>
+
+        </Grid>
+        
     </Grid>
 </UserControl>

@@ -6,7 +6,7 @@ It gives you full control over what is shown on the display.
 
 Test layout! (Included in the samples)
 
-![alt tag](https://raw.githubusercontent.com/endlessmind/G19LCD/master/page1.jpg)
+![alt tag](https://raw.githubusercontent.com/endlessmind/G19LCD/master/anim.gif)
 # Why and how?
 
 This project was made to let you use the display stand-alone without the rest of the keyboard,

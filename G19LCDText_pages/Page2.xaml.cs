@@ -31,7 +31,7 @@ namespace G19LCDText_pages
             mon = new Monitor();
 
             updateTimer = new DispatcherTimer();
-            updateTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            updateTimer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             updateTimer.Tick += new EventHandler(updateTimer_Tick);
 
             monitorTimer = new DispatcherTimer();
@@ -194,7 +194,7 @@ namespace G19LCDText_pages
             }
 
             tbMonitor.Text = vlc.Monitor.Name;
-            tbStatus.Text = String.Format("isOpen=True, PlayState={0}, isFullScreen={1}", vlc.State, vlc.isFullScreen.ToString());
+            tbStatus.Text = String.Format("isOpen=True, {0} {1}", vlc.State, vlc.isFullScreen ? "in fullscreen" :"");
             tbTitle.Text = vlc.Title;
             tbResAndAsp.Text = vlc.Resolution;
             tbType.Text = String.Format("{0} @ {1}", vlc.PlaybackType.ToString(), Utils.SecToTime(vlc.Length));

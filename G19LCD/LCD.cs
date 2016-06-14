@@ -27,6 +27,9 @@ namespace G19LCD
 
         public List<LcdPage> Pages { get; set;  }
 
+
+        List<Bitmap> images = new List<Bitmap>();
+
         
 
         public LcdPage CurrentPage {
@@ -54,6 +57,16 @@ namespace G19LCD
                 pageTrans = new FadeTransaction(this);
                 UpdatePage();
             }
+        }
+
+        public bool captureFrames
+        {
+            get; //set; //I've made this a readonly for now
+        }
+
+        public List<Bitmap> getImages
+        {
+            get { return images; } //This list will always be empty as It's just used it to create the gif
         }
 
         /// <summary>
@@ -140,13 +153,14 @@ namespace G19LCD
             pageTrans = null;
         }
 
+
         /// <summary>
         ///  Update the screen with the bitmap
         /// </summary>
         /// <param name="bmp">WinForm Bitmap</param>
         public void UpdateScreen(Bitmap bmp)
         {
-            bmp.Save("page" + cPageIndex + ".jpg");
+           // bmp.Save("page" + cPageIndex + ".jpg");
             UpdateScreen(bmp, null);
         }
 
@@ -177,12 +191,22 @@ namespace G19LCD
         /// <param name="transaction">Transaction between images</param>
         public void UpdateScreen(Bitmap bmp, Transaction transaction)
         {
+            if (bmp.Width != 320 || bmp.Height != 240)
+                throw new SystemException("Incorrect image size! Image size must be 320x240!");
+
+
             if (transaction != null && currentImageVisible != null)
             {
                 //We create a clone of the new (or next) bitmap, so that we can dispose the object when the transaction is done.
                 //This will reduse the amount of pointers used in memory during transaction, and we can dispose some of them when we're done!
                 transaction.start(currentImageVisible, bmp.Clone(new Rectangle(0, 0, bmp.Width, bmp.Height), bmp.PixelFormat));
             }
+
+            if (captureFrames)
+            {
+                images.Add(bmp.Clone(new Rectangle(0, 0, bmp.Width, bmp.Height), bmp.PixelFormat));
+            }
+
 
             byte[] lcd_buffer = Utils.convertToByte(bmp);
             //Send it!

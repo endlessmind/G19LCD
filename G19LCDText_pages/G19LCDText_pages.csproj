@@ -37,6 +37,10 @@
     <StartupObject>G19LCDText_pages.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -58,6 +62,10 @@
     <Compile Include="VlcTestStuff\Monitor.cs" />
     <Compile Include="VlcTestStuff\Utils.cs" />
     <Compile Include="VlcTestStuff\VlcStateItem.cs" />
+    <Compile Include="WeatherStuff\Forecast.cs" />
+    <Compile Include="WeatherStuff\Weather.cs" />
+    <Compile Include="WeatherStuff\WeatherResult.cs" />
+    <Compile Include="WeatherStuff\YahooWeather.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +111,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,6 +126,48 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\vlc_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cloudy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\drizzle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Hot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\humidity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\mostly_cloudy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\partly_cloudy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\snow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\snow_and_rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sunny.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\thunder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\thunderstorm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\wind.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
