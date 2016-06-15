@@ -85,9 +85,9 @@ namespace G19LCDText_pages
             //}
             lcd.CurrentPageIndex = nextPage;
 
-            //nextPage++;
-            //if (nextPage >= _pages.Count)
-            //    nextPage = 0;
+            nextPage++;
+            if (nextPage >= _pages.Count)
+                nextPage = 0;
 
             //if (nextPage == 1)
             //    oneTurn = true;

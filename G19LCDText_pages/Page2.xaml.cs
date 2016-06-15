@@ -185,11 +185,7 @@ namespace G19LCDText_pages
                                 }
                             }
                         }
-
-
                     }
-
-
                 }
             }
 

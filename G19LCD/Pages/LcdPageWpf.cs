@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -13,7 +12,6 @@ namespace G19LCD.Pages
         private readonly Rect _deviceRect;
 
         public FrameworkElement Element { get; set; }
-
 
         public LcdPageWpf(){
             _bitmap = new RenderTargetBitmap(320, 240, 96.0, 96.0, PixelFormats.Pbgra32);
