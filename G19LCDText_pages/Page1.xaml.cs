@@ -43,10 +43,13 @@ namespace G19LCDText_pages
 
             yw = new YahooWeather();
             wr = yw.getWeather("Trelleborg", "SE", false);
-            
-            imgWeather.Source = setWeatherImage(wr.Condition.Code);
-            updateLables();
-            setForecast();
+
+            if (wr != null)
+            {
+                imgWeather.Source = setWeatherImage(wr.Condition.Code);
+                updateLables();
+                setForecast();
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -65,9 +68,12 @@ namespace G19LCDText_pages
         private void weatherTimer_Tick(object sender, EventArgs e)
         {
             wr = yw.getWeather("Trelleborg", "SE", false);
-            imgWeather.Source = setWeatherImage(wr.Condition.Code);
-            updateLables();
-            setForecast();
+            if (wr != null)
+            {
+                imgWeather.Source = setWeatherImage(wr.Condition.Code);
+                updateLables();
+                setForecast();
+            }
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
@@ -77,25 +83,25 @@ namespace G19LCDText_pages
 
         private void setForecast()
         {
-            if (wr.FCast.Count >= 1)
+            if (wr.FCast.Count >= 2)
             {
-                imgFore1.Source = setWeatherImage(wr.FCast[0].Code);
-                lblFore1.Content = wr.FCast[0].HighTemp;
-                lblFore1Day.Content = wr.FCast[0].Day;
+                imgFore1.Source = setWeatherImage(wr.FCast[1].Code);
+                lblFore1.Content = wr.FCast[1].HighTemp;
+                lblFore1Day.Content = wr.FCast[1].Day;
             }
 
             if (wr.FCast.Count >= 2)
             {
-                imgFore2.Source = setWeatherImage(wr.FCast[1].Code);
-                lblFore2.Content = wr.FCast[1].HighTemp;
-                lblFore2Day.Content = wr.FCast[1].Day;
+                imgFore2.Source = setWeatherImage(wr.FCast[2].Code);
+                lblFore2.Content = wr.FCast[2].HighTemp;
+                lblFore2Day.Content = wr.FCast[2].Day;
             }
 
-            if (wr.FCast.Count >= 3)
+            if (wr.FCast.Count >= 2)
             {
-                imgFore3.Source = setWeatherImage(wr.FCast[2].Code);
-                lblFore3.Content = wr.FCast[2].HighTemp;
-                lblFore3Day.Content = wr.FCast[2].Day;
+                imgFore3.Source = setWeatherImage(wr.FCast[3].Code);
+                lblFore3.Content = wr.FCast[3].HighTemp;
+                lblFore3Day.Content = wr.FCast[3].Day;
             }
         }
 

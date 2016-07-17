@@ -51,7 +51,6 @@ namespace G19LCD
             return convertToByte(b);
         }
 
-
         private static byte joinGreenAndBlue(int g, int b)
         {
             return (byte)((g << 5) | (b >> 3));
@@ -69,7 +68,7 @@ namespace G19LCD
                 BitmapEncoder enc = new BmpBitmapEncoder();
                 enc.Frames.Add(BitmapFrame.Create(bitmapImage));
                 enc.Save(outStream);
-                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
+                Bitmap bitmap = new Bitmap(outStream);
 
                 return new Bitmap(bitmap);
             }

@@ -26,8 +26,6 @@ namespace G19LCD.Pages
             _bitmap.Clear();
             if (Element != null)
                 _bitmap.Render(Element);
-            //_bitmap.CopyPixels(_32BppPixels, 320 * 4, 0);
-            //return _32BppPixels;
             return Utils.BitmapImage2Bitmap(_bitmap);
         }
 

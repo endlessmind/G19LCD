@@ -30,7 +30,7 @@ namespace G19LCDText_pages
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             update_timer = new DispatcherTimer();
-            update_timer.Interval = new TimeSpan(0, 0, 10);
+            update_timer.Interval = new TimeSpan(0, 0, 15);
             update_timer.Tick += new EventHandler(updateTimer_Tick);
             update_timer.Start();
 

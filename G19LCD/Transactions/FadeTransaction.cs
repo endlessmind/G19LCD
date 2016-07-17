@@ -8,10 +8,19 @@ namespace G19LCD.Transactions
     public class FadeTransaction : Transaction
     {
 
+        /// <summary>
+        ///  Creates new instance of FadeTransaction
+        /// </summary>
+        /// <param name="lcd"></param>
         public FadeTransaction(LCD lcd) : base(lcd)
         {
         }
 
+        /// <summary>
+        ///  Starts the fade-transation
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="next"></param>
         public override void start(Bitmap current, Bitmap next) {
             this.currentImage = current;
             this.nextImage = next;
@@ -38,15 +47,15 @@ namespace G19LCD.Transactions
                 if (!dark) {
                     if (alpha >= 255) {
                         dark = true;
-                        alpha -= 45;
+                        alpha -= 25;
                     } else {
-                        alpha += 45;
+                        alpha += 25;
                     }
                 } else {
                     if (alpha <= 0)
                         done = true;
                     else
-                        alpha -= 45;
+                        alpha -= 25;
                 }
 
                 if (alpha < 0)
@@ -73,9 +82,10 @@ namespace G19LCD.Transactions
 
                 //turn the Bitmap into a Graphics object
                 Graphics gfx = Graphics.FromImage(bmp);
+
                 //set the InterpolationMode to HighQualityBicubic so to ensure a high
                 //quality image once it is transformed to the specified size
-              //  gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                //gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 //now draw our new image onto the graphics object
                 gfx.DrawImage(!dark ? currentImage : nextImage, new Point(0, 0));
                 //Then we overlay a partial transparent color

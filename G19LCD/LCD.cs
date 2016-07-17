@@ -11,6 +11,8 @@ namespace G19LCD
 {
     public class LCD
     {
+        private const int MAX_FRAMES = 20 * 15; //20fps for 15 sec
+
         UsbEndpointWriter writer;
         UsbEndpointReader reader;
         ErrorCode ec = ErrorCode.None;
@@ -20,6 +22,8 @@ namespace G19LCD
         public UsbDeviceFinder MyUsbFinder;
 
         private int cPageIndex;
+
+        private Boolean captureImages;
 
         private Bitmap currentImageVisible;
 
@@ -31,12 +35,11 @@ namespace G19LCD
         List<Bitmap> images = new List<Bitmap>();
 
         
-
+        /// <summary>
+        /// Get or Set the current Page displayed on the screen
+        /// </summary>
         public LcdPage CurrentPage {
-            get
-            {
-                return Pages[CurrentPageIndex];
-            }
+            get { return Pages[CurrentPageIndex]; }
             set
             {
                 cPageIndex = Pages.IndexOf(value);
@@ -45,12 +48,12 @@ namespace G19LCD
             }
         }
 
+        /// <summary>
+        ///  Get or Set the index of the current Page displayed on the screen
+        /// </summary>
         public int CurrentPageIndex
         {
-            get
-            {
-                return cPageIndex;
-            }
+            get { return cPageIndex; }
             set
             {
                 cPageIndex = value;
@@ -59,9 +62,18 @@ namespace G19LCD
             }
         }
 
+        /// <summary>
+        ///  Get or Set if frames are captured
+        /// </summary>
         public bool captureFrames
         {
-            get; //set; //I've made this a readonly for now
+            get { return captureImages; }
+
+            set
+            {
+                if (!value) { images.Clear(); }
+                captureImages = value;
+            }
         }
 
         public List<Bitmap> getImages
@@ -96,8 +108,7 @@ namespace G19LCD
             wholeUsbDevice = MyUsbDevice as IUsbDevice;
 
 
-            if (!ReferenceEquals(wholeUsbDevice, null))
-            {
+            if (!ReferenceEquals(wholeUsbDevice, null)) {
                 // This is a "whole" USB device. Before it can be used, 
                 // the desired configuration and interface must be selected.
 
@@ -119,29 +130,23 @@ namespace G19LCD
         /// </summary>
         public void CloseDevice()
         {
-            if (MyUsbDevice != null)
-            {
-                if (MyUsbDevice.IsOpen)
-                {
+            if (MyUsbDevice != null) {
+                if (MyUsbDevice.IsOpen) {
                     // If this is a "whole" usb device (libusb-win32, linux libusb-1.0)
                     // it exposes an IUsbDevice interface. If not (WinUSB) the 
                     // 'wholeUsbDevice' variable will be null indicating this is 
                     // an interface of a device; it does not require or support 
                     // configuration and interface selection.
                     IUsbDevice wholeUsbDevice = MyUsbDevice as IUsbDevice;
-                    if (!ReferenceEquals(wholeUsbDevice, null))
-                    {
+                    if (!ReferenceEquals(wholeUsbDevice, null)) {
                         // Release interface #0.
                         wholeUsbDevice.ReleaseInterface(0);
                     }
-
                     MyUsbDevice.Close();
                 }
                 MyUsbDevice = null;
-
                 // Free usb resources
                 UsbDevice.Exit();
-
             }
         }
 
@@ -195,31 +200,28 @@ namespace G19LCD
                 throw new SystemException("Incorrect image size! Image size must be 320x240!");
 
 
-            if (transaction != null && currentImageVisible != null)
-            {
+            if (transaction != null && currentImageVisible != null) {
                 //We create a clone of the new (or next) bitmap, so that we can dispose the object when the transaction is done.
                 //This will reduse the amount of pointers used in memory during transaction, and we can dispose some of them when we're done!
                 transaction.start(currentImageVisible, bmp.Clone(new Rectangle(0, 0, bmp.Width, bmp.Height), bmp.PixelFormat));
             }
 
-            if (captureFrames)
-            {
+            if (captureFrames) {
+                if (images.Count == MAX_FRAMES) {
+                    images.RemoveAt(0);
+                }
                 images.Add(bmp.Clone(new Rectangle(0, 0, bmp.Width, bmp.Height), bmp.PixelFormat));
             }
 
 
             byte[] lcd_buffer = Utils.convertToByte(bmp);
-            //Send it!
             int written;
-            //The Texas instrument TMS320DM355ZCE allows us to update this screen at 60fps, but 16ms to send would be to stretch it a bit. 50ms will give 20fps
+            //The Texas instrument TMS320DM355ZCE allows us to update this screen at 60fps. 33ms will allow for atleast to 30fps!
             ec = writer.Write(lcd_buffer, 33, out written);
 
-            if (ec != ErrorCode.None)
-            {
+            if (ec != ErrorCode.None) {
                 throw new Exception(UsbDevice.LastErrorString);
-            }
-            else
-            {
+            } else {
                 currentImageVisible = bmp;
             }
         }

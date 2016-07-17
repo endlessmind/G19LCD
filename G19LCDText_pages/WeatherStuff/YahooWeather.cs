@@ -30,6 +30,9 @@ namespace G19LCDText_pages.WeatherStuff
             wr.City = city;
             wr.Province = province;
 
+            if (obj["query"]["results"] == null)
+                return null;
+
             JObject itm = (JObject)obj["query"]["results"]["channel"];
             JObject condition = (JObject)itm["item"]["condition"];
             JArray arr = (JArray)itm["item"]["forecast"];
